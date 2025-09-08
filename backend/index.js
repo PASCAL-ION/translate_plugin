@@ -24,7 +24,27 @@ app.post('/translate', async (req, res) => {
     if (!text || !DEEPL_API_KEY) {
         return res.status(400).json({ error: 'Texte ou clé API manquante.' });
     }
+
+    // Première requête pour détecter la langue
     try {
+        const detectResponse = await fetch(DEEPL_API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `auth_key=${DEEPL_API_KEY}&text=${encodeURIComponent(text)}&target_lang=EN`
+        });
+        const detectData = await detectResponse.json();
+        const sourceLanguage = detectData.translations[0].detected_source_language;
+
+        // Si la langue source est la même que la langue cible, pas besoin de traduire
+        if (sourceLanguage === target_lang) {
+            return res.json({
+                translation: text,
+                source_lang: sourceLanguage,
+                message: 'Texte déjà dans la langue cible'
+            });
+        }
+
+        // Deuxième requête pour la traduction réelle
         const response = await fetch(DEEPL_API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

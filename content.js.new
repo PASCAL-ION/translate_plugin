@@ -14,7 +14,7 @@ let yOffset = 0;
 // Injection des styles
 function injectBubbleStyle() {
     if (document.getElementById('translate-bubble-style')) return;
-
+    
     const style = document.createElement('style');
     style.id = 'translate-bubble-style';
     style.textContent = `
@@ -191,7 +191,7 @@ function showTranslateButton(x, y) {
             display: 'none'
         });
         document.body.appendChild(translateButton);
-
+        
         // Effet hover
         translateButton.addEventListener('mouseenter', () => {
             translateButton.style.background = '#6d28d9';
@@ -203,13 +203,13 @@ function showTranslateButton(x, y) {
             translateButton.style.transform = 'none';
             translateButton.style.boxShadow = '0 2px 8px rgba(124, 58, 237, 0.3)';
         });
-
+        
         // Events
         translateButton.addEventListener('mousedown', (e) => {
             e.stopPropagation();
             isClickingButton = true;
         });
-
+        
         translateButton.addEventListener('click', (e) => {
             e.stopPropagation();
             e.preventDefault();
@@ -217,7 +217,7 @@ function showTranslateButton(x, y) {
             hideTranslateButton();
         });
     }
-
+    
     translateButton.style.left = (x + 5) + 'px';
     translateButton.style.top = (y + 5) + 'px';
     translateButton.style.display = 'block';
@@ -232,7 +232,7 @@ function hideTranslateButton() {
 // Gestion de la bulle de traduction
 function showBubble(selectedText, x, y, translation = '', sourceLang = '', targetLang = DEFAULT_TARGET_LANG) {
     injectBubbleStyle();
-
+    
     if (!bubble) {
         bubble = document.createElement('div');
         bubble.className = 'translate-bubble';
@@ -272,23 +272,23 @@ function showBubble(selectedText, x, y, translation = '', sourceLang = '', targe
 
     function dragStart(e) {
         if (e.target.closest('.close-btn')) return;
-
+        
         initialX = e.clientX - xOffset;
         initialY = e.clientY - yOffset;
 
         if (e.target === header || e.target.closest('.bubble-header')) {
             isDragging = true;
-            isClickingButton = true; // Empêche la réapparition du bouton Traduire
         }
     }
 
     function dragEnd() {
         isDragging = false;
-        setTimeout(() => { isClickingButton = false; }, 0); // Réinitialise après le mouseup
-    } function drag(e) {
+    }
+
+    function drag(e) {
         if (isDragging) {
             e.preventDefault();
-
+            
             const currentX = e.clientX - initialX;
             const currentY = e.clientY - initialY;
 
@@ -296,7 +296,7 @@ function showBubble(selectedText, x, y, translation = '', sourceLang = '', targe
             const rect = bubble.getBoundingClientRect();
             const maxX = window.innerWidth - rect.width;
             const maxY = window.innerHeight - rect.height;
-
+            
             xOffset = Math.min(Math.max(0, currentX), maxX);
             yOffset = Math.min(Math.max(0, currentY), maxY);
 
@@ -359,17 +359,17 @@ function showBubble(selectedText, x, y, translation = '', sourceLang = '', targe
     setTimeout(() => {
         const rect = bubble.getBoundingClientRect();
         let newX = x, newY = y;
-
+        
         if (x + rect.width > window.innerWidth) {
             newX = window.innerWidth - rect.width - 10;
         }
         if (y + rect.height > window.innerHeight) {
             newY = window.innerHeight - rect.height - 10;
         }
-
+        
         newX = Math.max(10, newX);
         newY = Math.max(10, newY);
-
+        
         xOffset = newX;
         yOffset = newY;
         bubble.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
@@ -385,16 +385,16 @@ function hideBubble() {
 // Traduction
 async function translateAndShowBubble(selectedText, x, y, targetLang = DEFAULT_TARGET_LANG) {
     showBubble(selectedText, x, y, '', '', targetLang);
-
+    
     try {
         const response = await fetch(BACKEND_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ text: selectedText, target_lang: targetLang })
         });
-
+        
         const data = await response.json();
-
+        
         if (data.translation) {
             currentTranslation = data.translation;
             let message = data.message ? ` (${data.message})` : '';
@@ -417,7 +417,7 @@ document.addEventListener('mouseup', function (event) {
     }
 
     const selection = window.getSelection().toString().trim();
-
+    
     if (selection.length > 0) {
         currentSelectedText = selection;
         showTranslateButton(event.clientX, event.clientY);
