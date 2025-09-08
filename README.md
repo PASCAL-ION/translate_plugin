@@ -102,4 +102,4 @@ Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou pr
 
 ---
 
-Créé avec ❤️ par PASCAL-ION
+Créé par PASCAL-ION
