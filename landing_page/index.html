@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Traduisez instantanément n'importe quel texte en un clic, sans quitter votre page. Extension de traduction rapide et intuitive.">
+    <title>Instant Translate - Extension de traduction rapide et intuitive</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/video-modal.js" defer></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-language"></i>
+                <span>Instant Translate</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Fonctionnalités</a>
+                <a href="#how-it-works">Comment ça marche</a>
+                <a href="#" class="install-button">
+                    <i class="fa-solid fa-download"></i>
+                    Installer
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div>
+                    <h1>La traduction en un clic,<br>directement sur votre page</h1>
+                    <p>Sélectionnez n'importe quel texte et obtenez une traduction instantanée. Plus besoin de
+                        copier-coller ou de changer d'onglet.</p>
+                    <div class="cta-group">
+                        <a href="#" class="primary-button">
+                            <i class="fa-solid fa-download"></i>
+                            Installer gratuitement
+                        </a>
+                        <div class="browser-support">
+                            <span>Compatible avec :</span>
+                            <div class="browser-icons">
+                                <i class="fa-brands fa-chrome" title="Chrome"></i>
+                                <i class="fa-brands fa-edge" title="Edge"></i>
+                                <i class="fa-brands fa-firefox" title="Firefox"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="demo-container" id="demo-container">
+                        <video class="demo-video" autoplay loop muted playsinline>
+                            <source src="img/video_demo.webm" type="video/webm">
+                        </video>
+                        <div class="demo-overlay">
+                            <button class="expand-video" aria-label="Agrandir la vidéo">
+                                <i class="fa-solid fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal de la vidéo -->
+                <div class="video-modal" id="video-modal">
+                    <div class="modal-content">
+                        <video class="modal-video" loop controls>
+                            <source src="img/video_demo.webm" type="video/webm">
+                        </video>
+                        <button class="close-modal" aria-label="Fermer la vidéo">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="section-header">
+                <h2>Fonctionnalités clés</h2>
+                <p>Découvrez pourquoi des milliers d'utilisateurs font confiance à Instant Translate</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3>Traduction instantanée</h3>
+                    <p>Obtenez des traductions en temps réel, sans délai ni interruption de votre lecture.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h3>Interface intuitive</h3>
+                    <p>Sélectionnez, cliquez, c'est traduit. Une expérience utilisateur fluide et naturelle.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3>Multi-langues</h3>
+                    <p>Plus de 100 langues supportées pour communiquer avec le monde entier.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3>Sécurisé</h3>
+                    <p>Vos données sont protégées. Aucune information personnelle n'est collectée.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="how-it-works">
+            <div class="section-header">
+                <h2>Comment ça marche</h2>
+                <p>Trois étapes simples pour traduire n'importe quel texte</p>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Sélectionnez</h3>
+                        <p>Surlignez le texte que vous souhaitez traduire</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Cliquez</h3>
+                        <p>Appuyez sur l'icône de traduction qui apparaît</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Lisez</h3>
+                        <p>La traduction s'affiche instantanément</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Prêt à faciliter vos traductions ?</h2>
+                <p>Rejoignez des milliers d'utilisateurs satisfaits et commencez à traduire plus efficacement.</p>
+                <a href="#" class="primary-button">
+                    <i class="fa-solid fa-download"></i>
+                    Installer gratuitement
+                </a>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">4.8/5</div>
+                        <div class="stat-label">Note moyenne</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-download"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">10k+</div>
+                        <div class="stat-label">Utilisateurs</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Langues supportées</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Prêt à simplifier vos traductions ?</h2>
+                <p>Rejoignez notre communauté d'utilisateurs et découvrez une nouvelle façon de traduire.</p>
+                <a href="#" class="primary-button">
+                    <i class="fa-solid fa-download"></i>
+                    Installer gratuitement
+                </a>
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fa-solid fa-shield-check"></i>
+                        100% sécurisé
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fa-solid fa-bolt"></i>
+                        Installation rapide
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fa-solid fa-language"></i>
+                <span>Instant Translate</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">Conditions d'utilisation</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Instant Translate. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
