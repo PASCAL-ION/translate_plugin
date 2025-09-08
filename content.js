@@ -1,4 +1,3 @@
-// Traduction automatique et affichage d'une bulle popup identique à la fenêtre extension
 const BACKEND_URL = "http://localhost:3000/translate";
 const DEFAULT_TARGET_LANG = "FR";
 
@@ -70,11 +69,12 @@ function injectBubbleStyle() {
             font-weight: 700;
             display: flex;
             align-items: center;
+            gap: 8px;
         }
-        .translate-bubble .fa-language {
-            margin-right: 8px;
-            font-size: 1.2em;
-            color: #5b21b6;
+        .translate-bubble .logo-icon {
+            width: 20px;
+            height: 20px;
+            fill: #7c3aed;
         }
         .translate-bubble label {
             font-size: 1em;
@@ -153,7 +153,7 @@ function showBubble(selectedText, x, y, translation = '', sourceLang = '', targe
     }
     bubble.innerHTML = `
         <button class="close-btn" title="Fermer">&times;</button>
-        <h3><i class="fa-solid fa-language"></i>Traduction</h3>
+        <h3><img src="${chrome.runtime.getURL('icons/language-solid-full.svg')}" class="logo-icon" alt="Icône de traduction">Traduction</h3>
         <label for="bubble-lang-select">Langue cible :</label>
         <select id="bubble-lang-select">
             <option value="FR">🇫🇷 Français</option>
@@ -173,7 +173,6 @@ function showBubble(selectedText, x, y, translation = '', sourceLang = '', targe
         <div class="result">${translation || 'Traduction en cours…'}</div>
         <button class="copy-btn" style="${translation ? '' : 'display:none'}">Copier la traduction</button>
     `;
-    // Bouton fermer
     const closeBtn = bubble.querySelector('.close-btn');
     if (closeBtn) {
         closeBtn.onmousedown = (e) => {
@@ -187,11 +186,9 @@ function showBubble(selectedText, x, y, translation = '', sourceLang = '', targe
             window.getSelection().removeAllRanges();
         };
     }
-    // Positionnement intelligent pour rester dans la fenêtre
     bubble.style.left = x + 'px';
     bubble.style.top = y + 'px';
     bubble.style.display = 'block';
-    // Après affichage, ajuste si déborde
     setTimeout(() => {
         const rect = bubble.getBoundingClientRect();
         let newLeft = x, newTop = y;
@@ -205,14 +202,12 @@ function showBubble(selectedText, x, y, translation = '', sourceLang = '', targe
         bubble.style.top = Math.max(10, newTop) + 'px';
     }, 0);
 
-    // Langue select event
     const langSelect = bubble.querySelector('#bubble-lang-select');
     langSelect.value = targetLang;
     langSelect.onchange = () => {
         translateAndShowBubble(selectedText, x, y, langSelect.value);
     };
 
-    // Copier bouton event
     const copyBtn = bubble.querySelector('.copy-btn');
     if (copyBtn) {
         copyBtn.onmousedown = (e) => {
@@ -225,7 +220,6 @@ function showBubble(selectedText, x, y, translation = '', sourceLang = '', targe
             navigator.clipboard.writeText(translation);
             copyBtn.textContent = 'Copié !';
             setTimeout(() => { copyBtn.textContent = 'Copier la traduction'; }, 1200);
-            window.getSelection().removeAllRanges();
         };
     }
 }
@@ -256,18 +250,31 @@ async function translateAndShowBubble(selectedText, x, y, targetLang = DEFAULT_T
     }
 }
 let isClickingButton = false;
+let isSelectingInBubble = false;
+
+document.addEventListener('mousedown', function (event) {
+    if (bubble && bubble.style.display !== 'none') {
+        if (!bubble.contains(event.target)) {
+            hideBubble();
+            window.getSelection().removeAllRanges();
+        }
+    }
+});
 
 document.addEventListener('mouseup', function (event) {
     if (isClickingButton) {
         isClickingButton = false;
         return;
     }
+
+    if (bubble && bubble.contains(event.target)) {
+        return;
+    }
+
     const selection = window.getSelection().toString().trim();
     if (selection.length > 0) {
         const x = event.clientX + 10;
         const y = event.clientY + 10;
         translateAndShowBubble(selection, x, y);
-    } else {
-        hideBubble();
     }
 });

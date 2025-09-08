@@ -8,7 +8,13 @@
         "storage"
     ],
     "action": {
-        "default_icon": {}
+        "default_icon": "icons/language-solid-full.svg"
+    },
+    "icons": {
+        "16": "icons/language-solid-full.svg",
+        "32": "icons/language-solid-full.svg",
+        "48": "icons/language-solid-full.svg",
+        "128": "icons/language-solid-full.svg"
     },
     "host_permissions": [
         "<all_urls>"
@@ -22,6 +28,16 @@
                 "content.js"
             ],
             "run_at": "document_end"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "icons/language-solid-full.svg"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
         }
     ]
 }
