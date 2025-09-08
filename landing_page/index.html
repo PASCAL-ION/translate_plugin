@@ -5,8 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Traduisez instantanément n'importe quel texte en un clic, sans quitter votre page. Extension de traduction rapide et intuitive.">
-    <title>Instant Translate - Extension de traduction rapide et intuitive</title>
+        content="Instant Translate - Extension de traduction instantanée pour votre navigateur. Traduisez n'importe quel texte en un clic, sans quitter votre page. Support de plus de 100 langues.">
+    <meta name="keywords"
+        content="traduction instantanée, extension navigateur, traducteur en ligne, traduction rapide, outil de traduction, extension chrome, instant translate">
+    <meta name="author" content="PASCAL-ION">
+    <meta property="og:title" content="Instant Translate - Extension de traduction rapide et intuitive">
+    <meta property="og:description"
+        content="Traduisez instantanément n'importe quel texte en un clic, sans quitter votre page. Support de plus de 100 langues.">
+    <meta property="og:image" content="img/language-solid-full.svg">
+    <meta property="og:url" content="https://pascal-ion.github.io/translate_plugin/landing_page/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Instant Translate - Extension de traduction rapide">
+    <meta name="twitter:description"
+        content="Traduisez instantanément n'importe quel texte en un clic, sans quitter votre page. Support de plus de 100 langues.">
+    <meta name="twitter:image" content="img/language-solid-full.svg">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pascal-ion.github.io/translate_plugin/landing_page/">
+    <title>Instant Translate - Extension de traduction rapide et intuitive | Traduction en un clic</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,13 +49,17 @@
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
+    <main role="main">
+        <section class="hero" aria-label="Introduction">
             <div class="hero-content">
                 <div>
                     <h1>La traduction en un clic,<br>directement sur votre page</h1>
-                    <p>Sélectionnez n'importe quel texte et obtenez une traduction instantanée. Plus besoin de
-                        copier-coller ou de changer d'onglet.</p>
+                    <p itemscope itemtype="http://schema.org/SoftwareApplication">
+                        <meta itemprop="applicationCategory" content="Extension de navigateur" />
+                        <meta itemprop="operatingSystem" content="Chrome, Firefox, Edge" />
+                        Sélectionnez n'importe quel texte et obtenez une traduction instantanée. Plus besoin de
+                        copier-coller ou de changer d'onglet.
+                    </p>
                     <div class="cta-group">
                         <a href="#" class="primary-button">
                             <i class="fa-solid fa-download"></i>
@@ -82,10 +102,15 @@
             </div>
         </section>
 
-        <section id="features" class="features">
+        <section id="features" class="features" aria-labelledby="features-title">
             <div class="section-header">
-                <h2>Fonctionnalités clés</h2>
-                <p>Découvrez pourquoi des milliers d'utilisateurs font confiance à Instant Translate</p>
+                <h2 id="features-title">Fonctionnalités clés</h2>
+                <p itemscope itemtype="http://schema.org/SoftwareApplication">
+                    <meta itemprop="name" content="Instant Translate" />
+                    <meta itemprop="downloadUrl"
+                        content="https://chrome.google.com/webstore/detail/instant-translate" />
+                    Découvrez pourquoi des milliers d'utilisateurs font confiance à Instant Translate
+                </p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
@@ -160,14 +185,17 @@
             </div>
         </section>
 
-        <section class="stats-section">
+        <section class="stats-section" aria-label="Statistiques">
             <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-card" itemscope itemtype="http://schema.org/AggregateRating">
+                    <meta itemprop="ratingValue" content="4.8" />
+                    <meta itemprop="bestRating" content="5" />
+                    <meta itemprop="ratingCount" content="10000" />
                     <div class="stat-icon">
-                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star" aria-hidden="true"></i>
                     </div>
                     <div class="stat-content">
-                        <div class="stat-number">4.8/5</div>
+                        <div class="stat-number" itemprop="ratingValue">4.8/5</div>
                         <div class="stat-label">Note moyenne</div>
                     </div>
                 </div>

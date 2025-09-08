@@ -42,6 +42,14 @@ body {
     background-color: var(--background);
 }
 
+/* Fix for deprecated heading behavior in semantic containers */
+article h1,
+aside h1,
+nav h1,
+section h1 {
+    font-size: 2.5rem;
+}
+
 /* Header */
 .header {
     background: rgba(255, 255, 255, 0.85);
