@@ -42,6 +42,13 @@ body {
     background-color: var(--background);
 }
 
+.logo-img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
 /* Fix for deprecated heading behavior in semantic containers */
 article h1,
 aside h1,
